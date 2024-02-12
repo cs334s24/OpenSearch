@@ -29,4 +29,9 @@ Query the OpenSearch REST API to verify the service is running
  curl https://localhost:9200 -ku admin:admin
 ```
 
+Bring the system down
+
+```
+docker-compose down
+```
 
