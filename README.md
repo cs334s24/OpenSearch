@@ -13,20 +13,20 @@ This repo is for testing OpenSearch with our sample data
 
 Launch docker-compose file
 
-'''
+```
 docker-compose up -d
-'''
+```
 
 Confirm the containers are running
 
-'''
+```
 docker-compose ps
-'''
+```
 
 Query the OpenSearch REST API to verify the service is running
 
-'''
+```
  curl https://localhost:9200 -ku admin:admin
-'''
+```
 
 
