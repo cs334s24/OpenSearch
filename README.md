@@ -36,9 +36,9 @@ docker-compose down
 ```
 
 ## Possible OpenSearch Methods/Algorithms to Use
-**TF-IDF (Term Frequency-Inverse Document Frequency):**
-- **Description:** TF-IDF is a statistical measure used to evaluate the importance of a term within a document relative to a collection of documents. It calculates a weight for each term in a document based on how frequently it appears in the document and how rare it is across all documents.
-- **How it could be used:** For our project, TF-IDF can be utilized to rank documents based on their relevance to a user's input query. We would compute the TF-IDF score for each term in the query and compare it against the TF-IDF scores of terms in the documents. Documents with higher cumulative TF-IDF scores for the query terms are considered more relevant and are ranked accordingly.
+**More like this query:**
+- **Description:** More like this query uses TF-IDF as a statistical measure used to evaluate the importance of a term within a document relative to a collection of documents. It calculates a weight for each term in a document based on how frequently it appears in the document and how rare it is across all documents.
+- **How it could be used:** For our project, More like this query can be utilized to rank documents based on their relevance to a user's input query. We would compute the TF-IDF score for each term in the query and compare it against the TF-IDF scores of terms in the documents. Documents with higher cumulative TF-IDF scores for the query terms are considered more relevant and are ranked accordingly.
 - **Pros:**
     - Provides a straightforward way to prioritize documents based on the importance of query terms within them.
     - Effective for handling large volumes of textual data.
@@ -54,13 +54,13 @@ docker-compose down
 - **Cons:**
     - Like TF-IDF, does not inherently capture semantic relationships between words or documents.
 
-**Vector Space Model (VSM):**
-- **Description:** The Vector Space Model represents documents and queries as vectors in a multi-dimensional space, where each dimension corresponds to a term. It measures the similarity between documents and queries using cosine similarity, allowing for the capture of semantic similarities between words and documents.
-- **How it could be used:** In our project, VSM can be employed to compute the cosine similarity between the user's input query vector and document vectors. Documents with higher cosine similarity scores are considered more relevant to the query and are ranked accordingly.
+**k-NN:**
+- **Description:** The k-NN search query finds the k documents that are closest in terms of a similarity metric (typically Euclidean distance or cosine similarity) to a given query document or vector.
+- **How it could be used:** In our project, this model can be used to find the relevance of a searched term in the data as well as be used for content-based recommendations.
 - **Pros:**
     - Allows for capturing semantic similarities between words and documents.
-    - Is very efficient for large amounts of data.
+    - Flexible for different types of data.
 - **Cons:**
-    - Requires careful preprocessing of text data and vector representations.
+    - High memory consumption.
     - Highest learning curve to fully understand and implement.
 
