@@ -1,4 +1,4 @@
-### OpenSearch Indexing
+# OpenSearch Indexing
 
 ## Introduction
 
@@ -32,9 +32,9 @@ and the overall need for our system.
 Managing node addition and and removal may be challenging.
 This goes along with the learning curve aspect.
 
-### Example Of A Potential Index
+# Example Of A Potential Index
 
-## 1. Index for Agency
+### 1. Index for Agency
 
 ```
 PUT /agency_index
@@ -47,7 +47,7 @@ PUT /agency_index
 }
 ```
 
-## 2. Index for Binary Data
+### 2. Index for Binary Data
 
 ```
 PUT /binary_docket_index
@@ -74,7 +74,7 @@ PUT /binary_docket_index
 }
 ```
 
-## 3. Index for Text Data
+### 3. Index for Text Data
 
 ```
 PUT /text_docket_index
