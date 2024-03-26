@@ -47,10 +47,10 @@ def add_dockets(docket):
     """Add dockets to OpenSearch."""
     url = f"{HOST}/{INDEX}/_doc"
     headers = {"Content-Type": "application/json"}
-    docket = json.loads(docket)
+    docket_data = json.loads(docket)
 
     try:
-        r = requests.post(url, auth=(username, password), headers=headers, data=json.dumps(docket))
+        r = requests.post(url, auth=(username, password), headers=headers, json=docket_data)
         r.raise_for_status()
     except requests.exceptions.RequestException as e:
         print("Error:", e)
