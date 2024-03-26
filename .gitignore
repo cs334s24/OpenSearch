@@ -2,3 +2,5 @@
 sample2/
 sample2.zip
 .env
+__pycache__/
+```

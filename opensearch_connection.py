@@ -82,7 +82,8 @@ def main():
         r = add_dockets(json.loads(sys.argv[2]))
     elif sys.argv[1] == "get":
         r = get_dockets(sys.argv[2])
-        print(sys.argv[2])
+        print(json.dumps(r, indent=4))
+        sys.exit()
     elif sys.argv[1] == "load":
         r = get_docket_json(sys.argv[2])
     else:
