@@ -1,5 +1,7 @@
 ## Opensearch Flask Application
 
+Flask App with a front end interface for searching the Mirrulations sample data for dockets by titles. It returns the docket ID, a score, and the docket title.
+
 ## Getting Started
 
 Create a .env file in the flask directory with the username and password
