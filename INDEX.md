@@ -7,6 +7,7 @@ In OpenSearch, indexing and mapping are fundamental concepts used to organize an
 
 ### dockets index
 
+```
 POST dockets/_doc
 {
   "agencyId": "IHS", 
@@ -34,9 +35,11 @@ POST dockets/_doc
   "links": {"self": "https://api.regulations.gov/v4/dockets/IHS-2005-0007"}, 
   "type": "dockets"
 }
+```
 
 ### dockets query
 
+```
 GET /dockets/_search
 {
   "query": {
@@ -48,6 +51,5 @@ GET /dockets/_search
     }
   }
 }
-
-
 ```
+
