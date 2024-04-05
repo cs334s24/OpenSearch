@@ -4,115 +4,50 @@
 
 In OpenSearch, indexing and mapping are fundamental concepts used to organize and structure data. Indexing refers to the process of storing and organizing data in an OpenSearch index, which is similar to a database table. Mapping defines the data types and properties of fields within an index, allowing for efficient searching and retrieval of information.
 
-## OpenSearch Pros
 
-**Scalability**
-OpenSearch is meant to scale horizontally which means it is good for handling large amount of data.
-It can distribute the workload across multiple nodes which will make for efficent retrieval.
+### dockets index
 
-**Flexibal Schema**
-OpenSearch allows for dynamic mapping.
-Also real-time indexing.
-Could be useful as our data is ever growing.
-
-**Nested Documents**
-Have the ability to represent relationships between entities in different documents.
-
-## OpenSearch Cons
-
-**Learning Curve** 
-Understanding different concepts such as mapping and indexing may take time.
-
-**Resource Intensive**
-Can be resource intensive in terms of hardware.
-More research needs to be done to understand the scalability of resources
-and the overall need for our system.
-
-**Cluster Management**
-Managing node addition and and removal may be challenging.
-This goes along with the learning curve aspect.
-
-# Example Of A Potential Index
-
-### 1. Index for Agency
-
-```
-PUT /agency_index
+POST dockets/_doc
 {
-  "mappings": {
-    "properties": {
-      "docket_id": {"type": "keyword"}
-    }
-  }
+  "agencyId": "IHS", 
+  "category": null, 
+  "displayProperties": [], 
+  "dkAbstract": null, 
+  "docketType": "Nonrulemaking", 
+  "effectiveDate": null, 
+  "field1": null, 
+  "field2": null, 
+  "generic": null, 
+  "keywords": null, 
+  "legacyId": null, 
+  "modifyDate": "2015-01-10T19:27:21Z", 
+  "objectId": "0b000064800f6329", 
+  "organization": null, 
+  "petitionNbr": null, 
+  "program": null, 
+  "rin": null, 
+  "shortTitle": null, 
+  "subType": null, 
+  "subType2": null, 
+  "title": "Grants and cooperative agreements; availability, etc.: Tribal Self-Governance Program", 
+  "id": "IHS-2005-0007", 
+  "links": {"self": "https://api.regulations.gov/v4/dockets/IHS-2005-0007"}, 
+  "type": "dockets"
 }
-```
 
-### 2. Index for Binary Data
+### dockets query
 
-```
-PUT /binary_docket_index
+GET /dockets/_search
 {
-  "mappings": {
-    "properties": {
-      "docket_id": {"type": "keyword"},
-      "comment_attachments": {
-        "properties": {
-          "comment_id": {"type": "keyword"},
-          "counter": {"type": "integer"},
-          "extension": {"type": "keyword"}
-        }
-      },
-      "document_attachments": {
-        "properties": {
-          "document_id": {"type": "keyword"},
-          "counter": {"type": "integer"},
-          "extension": {"type": "keyword"}
-        }
+  "query": {
+    "match": {
+      "data.attributes.title": {
+        "query": "Tribal Self-governance",
+        "fuzziness": "AUTO"
       }
     }
   }
 }
-```
 
-### 3. Index for Text Data
 
-```
-PUT /text_docket_index
-{
-  "mappings": {
-    "properties": {
-      "docket_id": {"type": "keyword"},
-      "comments": {
-        "properties": {
-          "comment_id": {"type": "keyword"}
-        }
-      },
-      "comments_extracted_text": {
-        "properties": {
-          "tool_name": {"type": "keyword"},
-          "comment_id": {"type": "keyword"},
-          "counter": {"type": "integer"},
-          "extracted_text": {"type": "text"}
-        }
-      },
-      "docket": {
-        "properties": {
-          "docket_id": {"type": "keyword"}
-        }
-      },
-      "documents": {
-        "properties": {
-          "document_id": {"type": "keyword"}
-        }
-      },
-      "documents_extracted_text": {
-        "properties": {
-          "tool_name": {"type": "keyword"},
-          "document_id": {"type": "keyword"},
-          "extracted_text": {"type": "text"}
-        }
-      }
-    }
-  }
-}
 ```
