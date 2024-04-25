@@ -3,6 +3,8 @@ This script contains all connections to OpenSearch, including the script to add 
 OpenSearch and the script to query OpenSearch for dockets.
 """
 
+# pylint: disable=too-many-nested-blocks, missing-timeout, invalid name
+
 import os
 import json
 import sys
@@ -54,8 +56,7 @@ def get_dockets(search_term):
         r = requests.get(url, auth=(username, password), headers=headers, data=json.dumps(query))
         r.raise_for_status()
     except requests.exceptions.RequestException as e:
-        print("Error:", e)
-        return
+        r = {'error': e}
 
     return r.json()
 
@@ -68,12 +69,11 @@ def add_dockets(docket):
         r = requests.post(url, auth=(username, password), headers=headers, json=docket)
         r.raise_for_status()
     except requests.exceptions.RequestException as e:
-        print("Error:", e)
-        return
+        r = {'error': e}
 
     return r.json()
 
-def main():
+if __name__ == "__main__":
     """Directs the script to add to or get dockets from OpenSearch."""
     if len(sys.argv) < 2:
         r = "Usage: python3 opensearch_connection.py [add | get] [search_term]\
@@ -90,6 +90,3 @@ def main():
         r = "Usage: python3 opensearch_connection.py [add | get] [search_term]\
               OR python opensearch_connection.py load [data_folder]"
     print(r)
-
-if __name__ == "__main__":
-    main()

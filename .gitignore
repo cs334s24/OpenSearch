@@ -3,4 +3,7 @@ sample2/
 sample2.zip
 .env
 __pycache__/
+.pytest_cache/
+.coverage
+unit-python.xml
 ```

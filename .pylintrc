@@ -1,0 +1,21 @@
+[MASTER]
+# Don't save data between runs
+persistent=no
+ignore=.venv
+
+# This file contains options that are changed from default.
+# See https://pylint.readthedocs.io/en/latest/technical_reference/features.html
+
+[MESSAGES CONTROL]
+
+# All checks are enabled except the following
+disable= too-few-public-methods, 
+    import-error,
+    redefined-outer-name
+
+[REFACTORING]
+max-nested-blocks=3
+
+[EXCEPTIONS]
+overgeneral-exceptions=builtins.BaseException,
+                       builtins.Exception

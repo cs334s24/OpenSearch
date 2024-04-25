@@ -1,18 +1,23 @@
-from flask import Flask, jsonify, render_template, request
+"""A simple Flask app that uses opensearch.py to search for dockets using a search term."""
+
 import subprocess
 import json
+from flask import Flask, jsonify, render_template, request
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
+    """Render the index page."""
     return render_template('index.html')
 
 @app.route('/search', methods=['POST'])
 def search():
+    """Search for a term using opensearch.py."""
     search_term = request.form['search_term']
-    # Call opensearch.py with subprocess. Adjust the path to opensearch.py as necessary.
-    result = subprocess.run(['python3', 'opensearch.py', 'get', search_term], capture_output=True, text=True)
+
+    command = ['python3', 'opensearch_connection.py', 'get', search_term]
+    result = subprocess.run(command, capture_output=True, text=True, check=True)
     if result.stderr:
         print("Error:", result.stderr)
         return jsonify(error="Search failed"), 500

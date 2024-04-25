@@ -1,2 +1,6 @@
 python-dotenv
 requests
+flask
+pylint
+pytest
+pytest-cov
